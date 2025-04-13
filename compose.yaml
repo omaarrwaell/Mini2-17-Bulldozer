@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15
+    container_name: rideshare-postgres
+    environment:
+      POSTGRES_DB: rideshare
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  mongodb:
+    image: mongo:6
+    container_name: rideshare-mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodata:/data/db
+
+  app:
+    build: .
+    container_name: springboot-app
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+      - mongodb
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/rideshare
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: password
+      SPRING_DATA_MONGODB_URI: mongodb://mongodb:27017/rideshare
+
+volumes:
+  pgdata:
+  mongodata:
