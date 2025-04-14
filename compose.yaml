@@ -21,19 +21,19 @@ services:
     volumes:
       - mongodata:/data/db
 
-#  app:
-#    build: .
-#    container_name: springboot-app
-#    ports:
-#      - "8080:8080"
-#    depends_on:
-#      - postgres
-#      - mongodb
-#    environment:
-#      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/rideshare
-#      SPRING_DATASOURCE_USERNAME: postgres
-#      SPRING_DATASOURCE_PASSWORD: password
-#      SPRING_DATA_MONGODB_URI: mongodb://mongodb:27017/rideshare
+  app:
+    build: .
+    container_name: springboot-app
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+      - mongodb
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/rideshare
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: password
+      SPRING_DATA_MONGODB_URI: mongodb://mongodb:27017/rideshare
 
 volumes:
   pgdata:
