@@ -39,5 +39,11 @@ public class Captain {
         this.avgRatingScore = avgRatingScore;
     }
 
+    public Captain(String name, String licenseNumber, double avgRatingScore) {
+     this.name = name;
+     this.licenseNumber = licenseNumber;
+     this.avgRatingScore = avgRatingScore;
+    }
+
     // Getters and setters...
 }

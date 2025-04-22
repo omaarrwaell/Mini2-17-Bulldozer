@@ -37,5 +37,11 @@ public class Payment {
         this.trip = trip;
     }
 
+    public Payment(double v, String bankTransfer, boolean b) {
+        this.amount = v;
+        this.paymentMethod = bankTransfer;
+        this.paymentStatus = b;
+    }
+
     // Getters and setters...
 }

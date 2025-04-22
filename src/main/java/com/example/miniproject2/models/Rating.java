@@ -38,5 +38,13 @@ public class Rating {
         this.ratingDate = ratingDate;
     }
 
+    public Rating(long l, String customer, int i, String s, LocalDateTime now) {
+        this.entityId = l;
+        this.entityType = customer;
+        this.score = i;
+        this.comment = s;
+        this.ratingDate = now;
+    }
+
     // Getters and setters...
 }
