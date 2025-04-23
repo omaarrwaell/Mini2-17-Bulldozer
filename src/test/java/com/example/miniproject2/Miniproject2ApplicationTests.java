@@ -10,9 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.dao.InvalidDataAccessApiUsageException;
 import org.springframework.http.*;
-import org.springframework.test.context.DynamicPropertyRegistry;
-import org.springframework.test.context.DynamicPropertySource;
-import org.springframework.test.context.TestPropertySource;
+
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.jdbc.Sql.ExecutionPhase;
 import org.springframework.web.client.RestTemplate;
@@ -530,14 +528,13 @@ class Mini2ApplicationTests {
         Rating rating = new Rating(2L, "customer", 4, "Good service.", LocalDateTime.now());
         ratingService.addRating(rating);
 
-
         rating.setComment("Updated service.");
         rating.setScore(5);
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         HttpEntity<Rating> request = new HttpEntity<>(rating, headers);
         ResponseEntity<Rating> response = restTemplate.exchange(
-                BASE_URL_RATING + "/update/" + (getID(RatingPath).get(rating)),
+                BASE_URL_RATING + "/update/" + getID(RatingPath).get(rating),
                 HttpMethod.PUT,
                 request,
                 Rating.class

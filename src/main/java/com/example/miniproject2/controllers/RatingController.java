@@ -26,6 +26,7 @@ public class RatingController {
 
     @PutMapping("/update/{id}")
     public Rating updateRating(@PathVariable String id, @RequestBody Rating updatedRating) {
+        System.out.println(">>> Controller received PUT request with ID: " + id);
         return ratingService.updateRating(id, updatedRating);
     }
 
