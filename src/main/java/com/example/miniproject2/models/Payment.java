@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
+@Table(name = "payments")
 @Getter
 @Setter
 public class Payment {
